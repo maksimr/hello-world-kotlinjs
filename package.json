@@ -5,13 +5,11 @@
   "dependencies": {
     "kotlin": "^1.1.4"
   },
-  "devDependencies": {
-    "nodemon": "^1.12.1"
-  },
+  "devDependencies": {},
   "scripts": {
-    "start": "npm run kt2js -silent | xargs -I{} node {}",
-    "kt2js": "./kt2js src/main/index.kt --source-paths src/",
-    "watch": "nodemon -e kt --watch src/ --exec 'npm run start'"
+    "start": "./gradlew run",
+    "watch": "./gradlew run --continuous",
+    "kt2js": "./gradlew compileKotlin2Js"
   },
   "author": "",
   "license": "ISC"
