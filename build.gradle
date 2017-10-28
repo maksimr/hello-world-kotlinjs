@@ -16,21 +16,28 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
 }
 
-compileKotlin2Js {
-    kotlinOptions.outputFile = "${projectDir}/js/main/index.kt.js"
+compileKotlin2Js.kotlinOptions.outputFile = "${projectDir}/js/main/index.kt.js"
+compileTestKotlin2Js.kotlinOptions.outputFile = "${projectDir}/js/test/index.kt.js"
+
+[compileKotlin2Js, compileTestKotlin2Js]*.configure {
     kotlinOptions.moduleKind = "commonjs"
     kotlinOptions.sourceMap = true
 }
 
 sourceSets {
-    main {
-        kotlin.srcDirs += "src/main"
-    }
+    main.kotlin.srcDirs += "src/main"
+    test.kotlin.srcDirs += "src/test"
 }
 
 task run(type: Exec, dependsOn: [compileKotlin2Js]) {
     executable("node")
     args("${compileKotlin2Js.kotlinOptions.outputFile}")
+}
+
+task runTest(type: Exec, dependsOn: [compileTestKotlin2Js]) {
+    executable("./node_modules/.bin/mocha")
+    args("${compileTestKotlin2Js.kotlinOptions.outputFile}")
 }

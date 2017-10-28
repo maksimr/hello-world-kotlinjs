@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
-    "kotlin": "^1.1.4"
+    "kotlin": "^1.2.0-beta-88"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "kotlin-test": "^1.2.0-beta-88",
+    "mocha": "^4.0.1"
+  },
   "scripts": {
     "start": "./gradlew run",
     "watch": "./gradlew run --continuous",
+    "test": "./gradlew runTest",
     "kt2js": "./gradlew compileKotlin2Js"
   },
   "author": "",
