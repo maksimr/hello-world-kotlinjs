@@ -1,7 +1,7 @@
 import kotlin.test.*
 
-class SimpleTest {
-    @Test fun testFoo() {
-        assertEquals(10, 10)
+class IndexTest {
+    @Test fun testVersion() {
+        assertEquals(version(), "1.0.0")
     }
 }

@@ -30,6 +30,7 @@ compileTestKotlin2Js.kotlinOptions.outputFile = "${projectDir}/js/test/index_tes
 sourceSets {
     main.kotlin.srcDirs += "src/main"
     test.kotlin.srcDirs += "src/test"
+    test.kotlin.srcDirs += main.kotlin.srcDirs
 }
 
 task run(type: Exec, dependsOn: [compileKotlin2Js]) {
