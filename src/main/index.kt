@@ -1,5 +1,5 @@
-import version.printVersion
+import node.require
 
 fun main(args: Array<String>) {
-    printVersion()
+    println(require("../../package.json").version)
 }
